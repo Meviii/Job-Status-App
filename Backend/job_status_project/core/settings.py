@@ -77,10 +77,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'JOB_STATUS_DB',
+        'TEST': {
+            'NAME': 'django_test',
+        },
+        'CLIENT': {
+            'host': 'mongodb+srv://mevlut:his1966@cluster0.jjy48pn.mongodb.net/?retryWrites=true&w=majority'
+        }
     }
 }
 
@@ -88,7 +100,7 @@ DATABASES = {
 # REST AUTH SESSIONS
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 'rest_framework.authentication.SessionAuthentication', ),
-    'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.AllowAny',),
 }
 
 AUTH_USER_MODEL = "api.User"

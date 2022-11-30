@@ -9,6 +9,8 @@ from rest_framework import status, permissions
 from .models import User
 from .serializers import UserSerializer, LoginSerializer
 
+import time
+
 class AuthApiView(APIView):
     permission_classes = (permissions.AllowAny,)
     
@@ -49,18 +51,18 @@ class UserApiView(APIView):
 
 class SingleUserApiView(APIView):
 
-    def get(self, request, pk, format=None):
-        user = User.objects.get(pk=pk)
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    def delete(self, request, pk, format=None):
-        user = User.objects.get(pk=pk)
+
+    def delete(self, request, username, format=None):
+        user = User.objects.get(username=username)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-    def put(self, request, pk, format=None):
-        user = User.objects.get(pk=pk)
+    def put(self, request, username, format=None):
+        user = User.objects.get(username=username)
         serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()

@@ -33,16 +33,18 @@ class LoginController():
         
         return user
 
-    def authenticate(self) -> bool:
+    def authenticate(self) -> tuple:
         try:
             auth_response = self._authentication_response()
             if auth_response.status_code == http.HTTPStatus.OK:
                 self._is_authed = True
-                return True
+                return (True, "Logging in...")
             else:
-                raise Exception("User could not be authenticated")
-        except Exception as e:
-            return False
+                return (False, "Incorrect Credentials")
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+            return (False, "Internal Error")
+        except requests.exceptions.HTTPError:
+            return (False, "HTTP Error")
     
     def _cache_element(self, element) -> bool:
         if element == []:

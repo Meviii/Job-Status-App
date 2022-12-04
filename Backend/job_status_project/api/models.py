@@ -4,8 +4,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     username = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=100)
-    table_columns = models.CharField(max_length=200)
-    table_data = models.CharField(max_length=400)
+    table_columns = models.JSONField()
+    table_data = models.JSONField()
     is_active = models.BooleanField(default=True)
     
     def __str__(self) -> str:

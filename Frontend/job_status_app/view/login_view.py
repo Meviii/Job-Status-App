@@ -15,6 +15,8 @@ class Ui_LoginWindow(QDialog):
         self.app_user = None
         self.login_controller = LoginController()
         
+        # Display Settings
+        widget.setWindowTitle("Login - Job Status App")
         widget.setFixedHeight(400)
         widget.setFixedWidth(350)
         
@@ -38,8 +40,9 @@ class Ui_LoginWindow(QDialog):
         self.login_button.setEnabled(False)
         QTimer.singleShot(3000, lambda: self.login_button.setDisabled(False))
         
-        if not (self.login_controller.authenticate()):
-            self.response_label.setText("Wrong credentials.")
+        auth_status, error = self.login_controller.authenticate()
+        if not auth_status:
+            self.response_label.setText(error)
             return
 
         # Get user

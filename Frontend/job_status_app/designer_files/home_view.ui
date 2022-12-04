@@ -13,32 +13,22 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>120</y>
-     <width>611</width>
-     <height>411</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>540</y>
+     <x>149</x>
+     <y>533</y>
      <width>511</width>
      <height>51</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout"/>
+   <layout class="QHBoxLayout" name="add_job_column_layout"/>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="add_job_button">
    <property name="geometry">
     <rect>
      <x>670</x>
-     <y>545</y>
+     <y>538</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -47,7 +37,7 @@
     <string>Add Job</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="title_label">
    <property name="geometry">
     <rect>
      <x>291</x>
@@ -60,7 +50,7 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Job Applications&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="search_line">
    <property name="geometry">
     <rect>
      <x>630</x>
@@ -73,7 +63,7 @@
     <string>Search...</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="jobs_button">
    <property name="geometry">
     <rect>
      <x>23</x>
@@ -94,7 +84,7 @@
     <string>Jobs</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="table_button">
    <property name="geometry">
     <rect>
      <x>23</x>
@@ -113,6 +103,32 @@
    </property>
    <property name="text">
     <string>Table </string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="table_widget">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>120</y>
+     <width>611</width>
+     <height>411</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="status_label">
+   <property name="geometry">
+    <rect>
+     <x>675</x>
+     <y>579</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

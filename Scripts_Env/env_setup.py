@@ -8,13 +8,13 @@ FILE = "activate.bat"
 
 def frontend_env_setup():
     env_path = os.getcwd() + FRONTEND_ENV_PATH + FILE
-    os.system(f'start cmd /k ""{env_path}" & cd "{os.getcwd() + FRONTEND_PATH}""')
+    os.system(f'start cmd /k "color b & "{env_path}" & cd "{os.getcwd() + FRONTEND_PATH}""')
     print(f"{os.getcwd() + FRONTEND_ENV_PATH}")
 
 def backend_env_setup():
     env_path = os.getcwd() + BACKEND_ENV_PATH + FILE
 
-    os.system(f'start cmd /k ""{env_path}" & cd "{os.getcwd() + BACKEND_PATH}""')
+    os.system(f'start cmd /k "color a & "{env_path}" & cd "{os.getcwd() + BACKEND_PATH}""')
     print({os.getcwd() + BACKEND_PATH})
     
 if __name__ == "__main__":

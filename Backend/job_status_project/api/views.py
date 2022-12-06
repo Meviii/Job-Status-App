@@ -69,6 +69,14 @@ class SingleUserApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def patch(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 class LogoutApiView(APIView):
     permission_classes = (permissions.AllowAny,)
     def post(self, request, format="application/json"):

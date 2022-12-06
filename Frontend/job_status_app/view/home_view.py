@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.uic import loadUi
 from controller.home_controller import HomeController
+import view.view_loader as view_loader
 
 PATH = 'designer_files/home_view.ui'
 class Ui_HomeWindow(QDialog):
@@ -18,23 +19,75 @@ class Ui_HomeWindow(QDialog):
         widget.setFixedHeight(600)
         widget.setFixedWidth(800)
         
-        # load columns for add job
+        # load columns for add job section
         self._load_columns_for_add_job()
         
         # load table data
         self._load_table_data()
         
+        # load columns into table management
+        self._load_columns_for_table_management()
+        
         # Initialize buttons
         self._buttons()
         
     def _buttons(self):
-        self.jobs_button.clicked.connect(self._jobs_view)
-        self.table_button.clicked.connect(self._table_view)
         self.add_job_button.clicked.connect(self.add_job)
+        self.table_widget.itemChanged.connect(self.update_table_data)
+        self.column_delete_button.clicked.connect(self.delete_column)
+        self.add_new_col_button.clicked.connect(self.add_column)
+        self.delete_rows_button.clicked.connect(self.delete_rows)
+        
+    def delete_rows(self):
+        self.app_user.table_data = []
+        if not self._save_user():
+            self.status_label.setText("Error Saving.")
+        
+        self._load_table_data()
     
+    def delete_column(self):
+        for i in self.app_user.table_columns:
+            if i.lower() == self.columns_combo_box.currentText().lower():
+                self.app_user.table_columns.remove(i)
+                break
+            
+        if not self._save_user():
+            self.status_label.setText("Error Saving.")
+        
+        view_loader.load_home_view(self, self.app_user)
+        
+    def add_column(self):
+        new_column = self._home_controller.fix_new_column_format(self.new_column_line_edit.text())
+        self.app_user.table_columns.append(new_column)
+        
+        if not self._save_user():
+            self.status_label.setText("Error Saving.")
+    
+        view_loader.load_home_view(self, self.app_user)
+        
+    def _load_columns_for_table_management(self):
+        for i in self.app_user.table_columns:
+            self.columns_combo_box.addItem(i)
+        
+    def update_table_data(self, item):
+        
+        # Update specific entry in table data in app_user
+        for i, job in enumerate(self.app_user.table_data):
+            for v, entry in enumerate(job):
+                if i == item.row() and v == item.column():
+                    self.app_user.table_data[i][v] = item.text()
+                    
+                    # Save user to server
+                    if not self._save_user():
+                        self.status_label.setText("Error Saving.")
+        
     def _load_columns_for_add_job(self):
         cols = self.app_user.table_columns
-
+        
+        if len(cols) == 0:
+            self.add_job_button.setEnabled(False)    
+            return
+        
         for idx in range(len(cols)):
             # label
             self.add_job_column_layout.addWidget(QLabel(cols[idx]))
@@ -81,5 +134,7 @@ class Ui_HomeWindow(QDialog):
     def _jobs_view():
         pass
     
-    def _save_user(self):
-        self._home_controller.save(self.app_user)
+    def _save_user(self) -> bool:
+        if not self._home_controller.save():
+            return False
+        return True

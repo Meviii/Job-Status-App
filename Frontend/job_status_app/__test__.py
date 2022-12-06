@@ -28,8 +28,8 @@ def test_user_serializer():
 
 def _get_dummy_user():
     to_serialize = {"id" : 1,
-                    "username" : "newuser1",
-                    "password" : "pbkdf2_sha256$390000$HlYXD1qEW5zHO4o22yenhi$PFoO59Q64Y61nyYUJttUnSATUp25u4GQWxwHYysVuog=",
+                    "username" : "user1",
+                    "password" : "admin",
                     "table_columns": ["Role", "Company", "Status"],
                     "table_data": [["Software Engineer", "Google", "Applied"],
                                    ["Software Engineer", "Facebook", "Applied"]],

@@ -16,7 +16,7 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>149</x>
+     <x>169</x>
      <y>533</y>
      <width>511</width>
      <height>51</height>
@@ -27,7 +27,7 @@
   <widget class="QPushButton" name="add_job_button">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>690</x>
      <y>538</y>
      <width>91</width>
      <height>41</height>
@@ -53,7 +53,7 @@
   <widget class="QLineEdit" name="search_line">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>650</x>
      <y>94</y>
      <width>131</width>
      <height>21</height>
@@ -61,58 +61,6 @@
    </property>
    <property name="placeholderText">
     <string>Search...</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="jobs_button">
-   <property name="geometry">
-    <rect>
-     <x>23</x>
-     <y>130</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Jobs</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="table_button">
-   <property name="geometry">
-    <rect>
-     <x>23</x>
-     <y>180</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Table </string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="table_widget">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>120</y>
-     <width>611</width>
-     <height>411</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="status_label">
@@ -129,6 +77,130 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>120</y>
+     <width>611</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>609</width>
+      <height>409</height>
+     </rect>
+    </property>
+    <widget class="QTableWidget" name="table_widget">
+     <property name="geometry">
+      <rect>
+       <x>-1</x>
+       <y>-1</y>
+       <width>611</width>
+       <height>411</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="columns_combo_box">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="currentText">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="column_delete_button">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>180</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="table_label">
+   <property name="geometry">
+    <rect>
+     <x>7</x>
+     <y>110</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Table Management</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="new_column_line_edit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>220</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>New Column..</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_new_col_button">
+   <property name="geometry">
+    <rect>
+     <x>49</x>
+     <y>250</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="delete_rows_button">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>93</y>
+     <width>91</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete ALL Rows</string>
    </property>
   </widget>
  </widget>

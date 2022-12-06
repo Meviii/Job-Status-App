@@ -31,8 +31,7 @@ class User:
     
     def get_json(self):
         data = self.__dict__
-        jsons = [i for i in data if i != "password"]
-        return jsons
+        return data
         
     def __str__(self) -> str:
         return f"User: {self.username}\nPassword: {self.password}\nTable Columns: {self.table_columns}\nTable Data: {self.table_data}\nIs Active: {self.is_active}"
